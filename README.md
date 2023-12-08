@@ -1,6 +1,6 @@
 # HTTP conformance project
-This repository contains the code for our paper: "Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact" [ACM ASIACCS 2024](TODO: link).
-In contains a test suite for HTTP conformance tests of responses and test runners to run it on both local web servers and on real websites.
+This repository contains the code for our paper: "Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact" [ACM ASIACCS 2024](TODO).
+It contains a test suite for HTTP conformance tests of responses and test runners to run it on both local web servers and on real websites.
 
 ## Structure
 - [conformance_checker.py](conformance_checker.py): MitM-Proxy script to record all traffic and run all probe tests
