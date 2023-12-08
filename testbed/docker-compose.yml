@@ -1,0 +1,138 @@
+version: '2'
+
+services:
+  openresty:
+    # OpenResty: https://openresty.org/en/
+    # Bitnami config: https://github.com/bitnami/containers/tree/main/bitnami/openresty
+    # Bitnami nginx default: https://github.com/bitnami/containers/blob/main/bitnami/openresty/1.21/debian-11/rootfs/opt/bitnami/openresty/nginx/conf/nginx.conf
+    image: docker.io/bitnami/openresty:1.21.4-1-debian-11-r96
+    ports:
+      - '127.0.0.1:${openresty_http_port}:8080'
+      - '127.0.0.1:${openresty_https_port}:8443'
+    volumes:
+      - ./app:/app  # Serve all files under /app
+      - ./certs/:/certs  # Use certs from here
+      - ./config/openresty_https.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/openresty_https.conf:ro  # Additional nginx config (https)
+  
+  apache:
+    # Apache: https://httpd.apache.org/
+    # Bitnami config: https://github.com/bitnami/containers/tree/main/bitnami/apache
+    # Bitnami apache default
+    image: 'docker.io/bitnami/apache:2.4.55-debian-11-r20'
+    ports:
+      - '127.0.0.1:${apache_http_port}:8080'
+      - '127.0.0.1:${apache_https_port}:8443'
+    volumes:
+      - ./app:/app
+      - ./certs:/certs
+      - ./config/apache_httpd.conf:/opt/bitnami/apache/conf/httpd.conf:ro
+      - ./config/apache_vhost.conf:/opt/bitnami/apache/conf/bitnami/bitnami.conf:ro
+      - ./config/apache_vhost_ssl.conf:/opt/bitnami/apache/conf/bitnami/bitnami-ssl.conf:ro
+
+  nginx:
+    # NGINX: https://nginx.org/
+    # Bitnami config: https://github.com/bitnami/containers/tree/main/bitnami/nginx
+    # Bitnami nginx default: https://github.com/bitnami/containers/blob/main/bitnami/nginx/1.23/debian-11/rootfs/opt/bitnami/nginx/conf/nginx.conf
+    image: 'docker.io/bitnami/nginx:1.23.3-debian-11-r33'
+    ports:
+      - '127.0.0.1:${nginx_http_port}:8080'
+      - '127.0.0.1:${nginx_https_port}:8443'
+    volumes:
+      - ./app:/app
+      - ./certs:/certs
+      - ./config/nginx_https.conf:/opt/bitnami/nginx/conf/server_blocks/nginx_https.conf:ro  # Additional nginx config (https)
+
+  tomcat:
+    # Tomcat: https://tomcat.apache.org/
+    # Bitnami config: https://github.com/bitnami/containers/tree/main/bitnami/tomcat
+    # Bitnami default config: Tomcat Default
+    image: docker.io/bitnami/tomcat:10.1.5-debian-11-r22
+    ports:
+      - '127.0.0.1:${tomcat_http_port}:8080'
+      - '127.0.0.1:${tomcat_https_port}:8443'
+    volumes:
+      - ./app/index.html:/opt/bitnami/tomcat/webapps/ROOT/index.html
+      - 'tomcat_data:/bitnami/tomcat'
+      - './certs:/certs'
+      - './config/tomcat.xml:/opt/bitnami/tomcat/conf/server.xml' # Copied from container + enabled TLS
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  openlitespeed:
+    # OpenLiteSpeed: https://openlitespeed.org/
+    # OpenLiteSpeed docker config: https://docs.litespeedtech.com/cloud/docker/openlitespeed/
+    image: docker.io/litespeedtech/openlitespeed:1.7.16-lsphp81
+    ports:
+      - '127.0.0.1:${openlitespeed_http_port}:80'
+      - '127.0.0.1:${openlitespeed_https_port}:443'
+      - '127.0.0.1:${openlitespeed_admin_port}:7080'
+    volumes:
+      - './app:/var/www/vhosts/localhost/html'
+
+  caddy:
+    # Caddy: https://caddyserver.com/
+    # Caddy docker config: https://hub.docker.com/_/caddy
+    # Caddy default config: https://github.com/caddyserver/dist/blob/master/config/Caddyfile
+    image: docker.io/caddy:2.6.4
+    ports:
+      - '127.0.0.1:${caddy_http_port}:80'
+      - '127.0.0.1:${caddy_https_port}:443'
+    volumes:
+      - 'caddy_data:/data'
+      - 'caddy_config:/config'
+      - './app:/usr/share/caddy'
+      - './config/Caddyfile:/etc/caddy/Caddyfile'
+      - './certs:/certs'
+  
+  jetty:
+    # Jetty: https://www.eclipse.org/jetty/
+    # Jetty docker config: https://hub.docker.com/_/jetty
+    image: docker.io/jetty:11.0.13-jdk17
+    # Run the following command once to enable HTTP2 and TLS, then restart the container (docker restart testbed-jetty-1)!
+    # docker exec testbed-jetty-1 bash -c "java -jar  /usr/local/jetty/start.jar --add-modules=ssl,http2,https,test-keystore"
+    # TODO: run the above command automatically!
+    ports:
+      - '127.0.0.1:${jetty_http_port}:8080'
+      - '127.0.0.1:${jetty_https_port}:8443'
+    volumes:
+      - './app:/static'
+      - './config/jetty.xml:/var/lib/jetty/webapps/jetty.xml'
+
+
+# Frameworks/Debug Servers/Servers usually served behind another server
+  node:
+    # Node.js/express.js minimal server https://expressjs.com/en/starter/hello-world.html
+    # Bitnami config: https://github.com/bitnami/containers/tree/main/bitnami/node
+    tty: true # Enables debugging capabilities when attached to this container.
+    image: docker.io/bitnami/node:18.14.2-debian-11-r4
+    command: "sh -c 'npm install && npm start'"
+    ports:
+      - '127.0.0.1:${node_http_port}:3000'
+    volumes:
+      - ./app:/app/static
+      - ./config/node:/app
+
+
+
+# (Reverse) Proxies
+  # Can run standalone (almost always return 404?)
+  traefik:
+    # Traefik: https://github.com/traefik/traefik
+    # Traefik docker config: https://doc.traefik.io/traefik/getting-started/install-traefik/
+    # Traefik default config: https://raw.githubusercontent.com/traefik/traefik/v2.8/traefik.sample.yml
+    image: docker.io/traefik:v2.9.8
+    ports:
+      - '127.0.0.1:${traefik_http_port}:80'
+      - '127.0.0.1:${traefik_https_port}:443'
+    volumes:
+      - './config/traefik.yml:/etc/traefik/traefik.yml:ro'
+      - './certs:/certs'
+
+# Other stuff
+volumes:
+  tomcat_data:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local

@@ -1,0 +1,11 @@
+entryPoints:
+  web:
+    address: :80
+
+  websecure:
+    address: :443
+
+tls:
+  certificates:
+    - certFile: /certs/server.crt
+    -  keyFile: /certs/server.key

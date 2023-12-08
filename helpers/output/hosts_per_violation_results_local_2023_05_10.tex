@@ -1,0 +1,23 @@
+\begin{tabular}{llllr}
+\toprule
+         &             &                              &       unique &  nunique \\
+test\_type & type & New name &              &          \\
+\midrule
+Direct & Recommendation & Allow CRLF prior to request line &  [localhost] &        1 \\
+         &             & Blocked methods should result in 405 &  [localhost] &        1 \\
+         &             & Unknown methods should result in 501 &  [localhost] &        1 \\
+         & Requirement & Bad host &  [localhost] &        1 \\
+         &             & Illegal chars &  [localhost] &        1 \\
+         &             & Illegal whitespace after startline &  [localhost] &        1 \\
+         &             & Illegal whitespace in header name &  [localhost] &        1 \\
+Probe & ABNF & Server ABNF &  [localhost] &        1 \\
+         & Recommendation & Redirect after HTTP-UIR &  [localhost] &        1 \\
+         &             & STS after UIR\textbackslash rlap\{*\} &  [localhost] &        1 \\
+         & Requirement & Allow header present for 405 &  [localhost] &        1 \\
+         &             & Date header required &  [localhost] &        1 \\
+         &             & Forbidden status-codes for POST &  [localhost] &        1 \\
+\textbackslash Multi\{\} & Recommendation & HEAD and GET same headers &  [localhost] &        1 \\
+         & Requirement & Content-Length for HEAD=GET &  [localhost] &        1 \\
+         &             & Same headers for 304 and 200 &  [localhost] &        1 \\
+\bottomrule
+\end{tabular}

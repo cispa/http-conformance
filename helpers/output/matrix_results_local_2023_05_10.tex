@@ -1,0 +1,24 @@
+\begin{tabular}{lllllllllllll}
+\toprule
+    &             &                              &     apache &      caddy &      jetty &      nginx &       node & openlitespeed &  openresty &     tomcat &    traefik &        All \\
+Test Type & Specification Level & Rule Name &            &            &            &            &            &               &            &            &            &            \\
+\midrule
+Direct & Requirement & Bad host &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &          9 \\
+Probe & Recommendation & Redirect after HTTP-UIR &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &          9 \\
+    &             & STS after UIR\rlap{*} &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    $\circ$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &          8 \\
+Direct & Recommendation & Blocked methods should result in 405 &  $\bullet$ &  $\bullet$ &  $\bullet$ &    $\circ$ &  $\bullet$ &     $\bullet$ &    $\circ$ &  $\bullet$ &  $\bullet$ &          7 \\
+    &             & Unknown methods should result in 501 &    $\circ$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &     $\bullet$ &  $\bullet$ &    $\circ$ &  $\bullet$ &          7 \\
+    & Requirement & Illegal chars &    $\circ$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    $\circ$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &          7 \\
+Probe & Requirement & Allow header present for 405 &  $\bullet$ &    $\circ$ &    $\circ$ &  $\bullet$ &    $\circ$ &       $\circ$ &  $\bullet$ &    $\circ$ &    $\circ$ &          3 \\
+    &             & Forbidden status-codes for POST &  $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &     $\bullet$ &    $\circ$ &  $\bullet$ &    $\circ$ &          3 \\
+Direct & Recommendation & Allow CRLF prior to request line &    $\circ$ &  $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &       $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &          2 \\
+    & Requirement & Illegal whitespace after startline &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &     $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &          2 \\
+    &             & Illegal whitespace in header name &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &     $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &          2 \\
+Probe & Requirement & Date header required &    $\circ$ &    $\circ$ &  $\bullet$ &    $\circ$ &  $\bullet$ &       $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &          2 \\
+    & ABNF & Server ABNF &    $\circ$ &    $\circ$ &  $\bullet$ &    $\circ$ &    $\circ$ &       $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ \\
+\Multi{} & Recommendation & HEAD and GET same headers &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &     $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ \\
+    & Requirement & Content-Length for HEAD=GET &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &       $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ \\
+    &             & Same headers for 304 and 200 &  $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &       $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ \\
+All &             &                              &          7 &          7 &          8 &          6 &          8 &            10 &          6 &          6 &          7 &         65 \\
+\bottomrule
+\end{tabular}

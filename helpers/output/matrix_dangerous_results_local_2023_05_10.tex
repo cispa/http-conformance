@@ -1,0 +1,14 @@
+\begin{tabular}{llllllllllllr}
+\toprule
+    &             &                                   &     apache &      caddy &      jetty &      nginx &       node & openlitespeed &  openresty &     tomcat &    traefik &  All \\
+Test Type & Specification Level & Rule Name &            &            &            &            &            &               &            &            &            &      \\
+\midrule
+Direct & Requirement & Bad host &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    9 \\
+Probe & Recommendation & Redirect after HTTP-UIR &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    9 \\
+    &             & STS after UIR\rlap{*} &  $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    $\circ$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    8 \\
+Direct & Requirement & Illegal chars &    $\circ$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    $\circ$ &     $\bullet$ &  $\bullet$ &  $\bullet$ &  $\bullet$ &    7 \\
+    &             & Illegal whitespace after startline &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &     $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &    2 \\
+    &             & Illegal whitespace in header name &    $\circ$ &    $\circ$ &    $\circ$ &    $\circ$ &  $\bullet$ &     $\bullet$ &    $\circ$ &    $\circ$ &    $\circ$ &    2 \\
+All &             &                                   &          3 &          4 &          4 &          4 &          4 &             6 &          4 &          4 &          4 &   37 \\
+\bottomrule
+\end{tabular}

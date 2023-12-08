@@ -1,0 +1,23 @@
+\begin{tabular}{llllr}
+\toprule
+         &             &                              &                                                                          unique &  nunique \\
+test\_type & type & New name &                                                                                 &          \\
+\midrule
+Direct & Requirement & Bad host &  [apache, caddy, jetty, nginx, node, openlitespeed, openresty, tomcat, traefik] &        9 \\
+Probe & Recommendation & Redirect after HTTP-UIR &  [apache, caddy, jetty, nginx, node, openlitespeed, openresty, tomcat, traefik] &        9 \\
+         &             & STS after UIR\textbackslash rlap\{*\} &        [apache, caddy, jetty, nginx, openlitespeed, openresty, tomcat, traefik] &        8 \\
+Direct & Recommendation & Blocked methods should result in 405 &                    [apache, caddy, jetty, node, openlitespeed, tomcat, traefik] &        7 \\
+         &             & Unknown methods should result in 501 &                  [caddy, jetty, nginx, node, openlitespeed, openresty, traefik] &        7 \\
+         & Requirement & Illegal chars &                [caddy, jetty, nginx, openlitespeed, openresty, tomcat, traefik] &        7 \\
+Probe & Requirement & Allow header present for 405 &                                                      [apache, nginx, openresty] &        3 \\
+         &             & Forbidden status-codes for POST &                                                 [apache, openlitespeed, tomcat] &        3 \\
+Direct & Recommendation & Allow CRLF prior to request line &                                                                [caddy, traefik] &        2 \\
+         & Requirement & Illegal whitespace after startline &                                                           [node, openlitespeed] &        2 \\
+         &             & Illegal whitespace in header name &                                                           [node, openlitespeed] &        2 \\
+Probe & Requirement & Date header required &                                                                   [jetty, node] &        2 \\
+         & ABNF & Server ABNF &                                                                         [jetty] &        1 \\
+\textbackslash Multi\{\} & Recommendation & HEAD and GET same headers &                                                                 [openlitespeed] &        1 \\
+         & Requirement & Content-Length for HEAD=GET &                                                                          [node] &        1 \\
+         &             & Same headers for 304 and 200 &                                                                        [apache] &        1 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,40 @@
+\begin{tabular}{llr}
+\toprule
+     &                              &  \#Hosts \\
+Group & Rule Name &          \\
+\midrule
+     & STS after UIR\rlap{*} &     8440 \\
+     & Redirect after HTTP-UIR &     7822 \\
+Cookies & Cookies use IMF-fixdate &     2850 \\
+     & Duplicate cookie names &      518 \\
+     & Set-Cookie ABNF &       93 \\
+     & Cookies with duplicate attributes &       22 \\
+STS & STS not allowed for HTTP &      550 \\
+     & STS ABNF &       15 \\
+     & Duplicate directives for STS &        1 \\
+Duplicates & Duplicate headers &      465 \\
+MIME & Content-Type header required &      290 \\
+     & Content-Type ABNF &       48 \\
+     & XCTO ABNF &       10 \\
+Restrictive & XFO ABNF &      262 \\
+     & Duplicate CSP &       71 \\
+     & CSP ABNF &       23 \\
+     & PermissionsPolicy ABNF &       18 \\
+     & Duplicate CSP-RO &        7 \\
+     & COOP ABNF &        6 \\
+     & CORP ABNF &        3 \\
+     & COEP ABNF &        1 \\
+CORS & ACAO ABNF &       83 \\
+     & ACAC ABNF &       28 \\
+     & ACAM ABNF &       19 \\
+     & ACAH ABNF &       18 \\
+     & ACMA ABNF &        3 \\
+     & Forbidden Content-Length for 1XX and 204 &       55 \\
+     & Forbidden surrounding whitespace for fields &       51 \\
+     & Forbidden content for 304 &       46 \\
+     & Content-Length ABNF &        3 \\
+     & Upgrade required for 101 &        1 \\
+     & TE forbidden for non HTTP/1.1 responses &        1 \\
+     & TE forbidden for 1XX and 204 &        1 \\
+\bottomrule
+\end{tabular}

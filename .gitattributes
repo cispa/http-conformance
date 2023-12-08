@@ -1,0 +1,2 @@
+*.db diff=sqlite3
+*.ipynb filter=nbstrip_full
