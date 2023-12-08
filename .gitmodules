@@ -1,6 +1,6 @@
-[submodule "wpt"]
-	path = sanity_check/wpt
-	url = https://github.com/JannisBush/wpt.git
 [submodule "redbot"]
 	path = redbot
 	url = https://github.com/JannisBush/redbot.git
+[submodule "sanity_check/wpt"]
+	path = sanity_check/wpt
+	url = https://github.com/JannisBush/wpt.git
