@@ -1,5 +1,5 @@
 # HTTP conformance project
-This repository contains the code for our paper: "Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact" [ACM ASIACCS 2024](TODO).
+This repository contains the code for our paper: "Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact" [ACM ASIACCS 2024](https://swag.cispa.saarland/papers/rautenstrauch2024conformance.pdf).
 It contains a test suite for HTTP conformance tests of responses and test runners to run it on both local web servers and on real websites.
 
 ## Structure
@@ -64,10 +64,10 @@ If there are questions about our tools or paper, please either file an issue or 
 The paper is available at the [ACM Digital Library](TODO). 
 You can cite our work with the following BibTeX entry:
 ```latex
-@inproceedings{RautenstrauchWho2024,
+@inproceedings{rautenstrauch2024conformance,
  author = {Rautenstrauch, Jannis and Stock, Ben},
  booktitle = {ACM ASIACCS},
  title = {{Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact}},
  year = {2024},
- doi = {TODO},
+ doi = {TBA},
 }
