@@ -61,7 +61,7 @@ If there are questions about our tools or paper, please either file an issue or 
 
 ## Research Paper
 
-The paper is available at the [ACM Digital Library](TODO). 
+The paper is available at the [ACM Digital Library](https://dl.acm.org/doi/10.1145/3634737.3637678). 
 You can cite our work with the following BibTeX entry:
 ```latex
 @inproceedings{rautenstrauch2024conformance,
@@ -69,5 +69,5 @@ You can cite our work with the following BibTeX entry:
  booktitle = {ACM ASIACCS},
  title = {{Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact}},
  year = {2024},
- doi = {TBA},
+ doi = {10.1145/3634737.3637678},
 }
