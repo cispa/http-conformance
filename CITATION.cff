@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: If you use this software, please cite both the article from preferred-citation and the software itself.
+authors:
+  - family-names: Rautenstrauch
+    given-names: Jannis
+  - family-names: Stock
+    given-names: Ben
+title: Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact
+version: 1.0.0
+url: https://doi.org/10.1145/3634737.3637678
+doi: 10.1145/3634737.3637678
+date-released: '2024-09-26'
+preferred-citation:
+  authors:
+    - family-names: Rautenstrauch
+      given-names: Jannis
+    - family-names: Stock
+      given-names: Ben
+  title: Who's Breaking the Rules? Studying Conformance to the HTTP Specifications and its Security Impact
+  doi: 10.1145/3634737.3637678
+  url: https://doi.org/10.1145/3634737.3637678
+  type: conference-paper
+  pages: 843–855
+  year: '2024'
+  isbn: '9798400704826'
+  collection-title: Proceedings of the 19th ACM Asia Conference on Computer and Communications Security
+  conference:
+    name: ASIA CCS '24
+  publisher:
+    name: Association for Computing Machinery
+    address: New York, NY, USA
