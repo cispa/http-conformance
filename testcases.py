@@ -158,7 +158,7 @@ class code_400_after_bad_host_request:
                 ),
                 "2 hosts",
             ),
-            (b"Host: abc\r\n", "invalid host"),
+            (b"Host: ###\r\n", "invalid host"),
         ]:
             req = build_request(
                 url.host,
